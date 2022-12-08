@@ -312,7 +312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32, y: -77}
+  m_AnchoredPosition: {x: -37, y: -77}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96235738
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 160788841}
   - component: {fileID: 160788840}
   m_Layer: 0
-  m_Name: OFF
+  m_Name: btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +927,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 57.87
+  m_Spacing: 119.26
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1005,7 +1005,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Sounds
+  m_Text: Vibration
 --- !u!222 &392284098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2509,7 +2509,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 57.87
+  m_Spacing: 119.26
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3578,13 +3578,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loop: {fileID: 1261777098}
-  soundBtnOff: {fileID: 2045377247}
-  soundBtnOn: {fileID: 0}
+  soundBtn: {fileID: 2045377247}
   sfx: {fileID: 1118199543}
-  sfxBtnOff: {fileID: 1311675832}
-  sfxBtnOn: {fileID: 0}
-  vibtoBtnOff: {fileID: 160788840}
-  vibtoBtnOn: {fileID: 0}
+  sfxBtn: {fileID: 1311675832}
+  vibroBtn: {fileID: 160788840}
 --- !u!1 &1054015247
 GameObject:
   m_ObjectHideFlags: 0
@@ -5172,7 +5169,7 @@ GameObject:
   - component: {fileID: 1311675833}
   - component: {fileID: 1311675832}
   m_Layer: 0
-  m_Name: OFF
+  m_Name: btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6407,7 +6404,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 57.87
+  m_Spacing: 119.26
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -7053,7 +7050,7 @@ GameObject:
   - component: {fileID: 2045377248}
   - component: {fileID: 2045377247}
   m_Layer: 0
-  m_Name: OFF
+  m_Name: btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
