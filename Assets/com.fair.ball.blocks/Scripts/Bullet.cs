@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
-        Debug.Log(Rigidbody);
     }
 
     private void Start()

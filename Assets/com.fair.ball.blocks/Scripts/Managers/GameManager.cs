@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
 
-    private Ball BallPrefab { get; set; }
     private Transform EnvironmentRef { get; set; }
 
     public UIManager uiManager;
@@ -22,7 +21,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefab = Resources.Load<Player>("player");
         BulletPrefab = Resources.Load<GameObject>("bullet");
 
-        BallPrefab = Resources.Load<Ball>("ball");
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
 
@@ -47,8 +45,8 @@ public class GameManager : MonoBehaviour
             Destroy(FindObjectOfType<Player>().gameObject);
         }
 
-        Ball[] balls = FindObjectsOfType<Ball>();
-        foreach(Ball b in balls)
+        Bullet[] balls = FindObjectsOfType<Bullet>();
+        foreach(Bullet b in balls)
         {
             Destroy(b.gameObject);
         }
