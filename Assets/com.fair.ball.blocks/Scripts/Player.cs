@@ -20,7 +20,11 @@ public class Player : MonoBehaviour
         }
 
         Vector2 toInput = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        transform.GetChild(0).up = toInput.normalized;
+
+        toInput.x = Mathf.Clamp(toInput.x, -1, 1);
+        toInput.y = Mathf.Clamp(toInput.y, 0, 1);
+
+        transform.GetChild(0).up = Vector2.MoveTowards(transform.GetChild(0).up, toInput, 10 * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
