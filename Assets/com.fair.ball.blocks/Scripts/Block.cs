@@ -15,6 +15,7 @@ public class Block : MonoBehaviour
 
             if(health <= 0)
             {
+                OnDestroy?.Invoke();
                 Destroy(gameObject);
             }
         }
@@ -25,6 +26,7 @@ public class Block : MonoBehaviour
     private TextMeshPro TextComponent { get; set; }
 
     public static Action OnCollisionEnter { get; set; }
+    public static Action OnDestroy { get; set; }
 
     private void Start()
     {

@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     private float nextFire;
     private const float fireRate = 0.05f;
 
+    private int destroyedBlockCount;
+    private const int blockCount = 81;
+
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
     private GameObject Level { get; set; }
@@ -24,6 +27,18 @@ public class GameManager : MonoBehaviour
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
 
+    private void Start()
+    {
+        Block.OnDestroy += () =>
+        {
+            if(++destroyedBlockCount >= blockCount)
+            {
+                uiManager.OpenWindow(5);
+                EndGame();
+            }
+        };
+    }
+
     public void Shoot()
     {
         if (Time.time > nextFire)
@@ -35,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        destroyedBlockCount = 0;
+
         Instantiate(PlayerPrefab, EnvironmentRef);
         Instantiate(Level, EnvironmentRef);
     }
