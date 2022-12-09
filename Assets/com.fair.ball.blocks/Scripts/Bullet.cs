@@ -15,4 +15,9 @@ public class Bullet : MonoBehaviour
         transform.position = FindObjectOfType<Player>().transform.position;
         Rigidbody.velocity = Player.Velocity * force;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Rigidbody.velocity = Vector2.Reflect(transform.up, collision.contacts[0].normal) * force;
+    }
 }
