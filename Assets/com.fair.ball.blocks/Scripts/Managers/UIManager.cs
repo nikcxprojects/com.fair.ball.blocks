@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     private int score ;
-    private float currentTime;
-    private const float initTime = 60;
 
     private GameObject _last = null;
 
@@ -17,14 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject result;
 
     [Space(10)]
-    public Transform border;
-
-    [Space(10)]
     [SerializeField] Text scoreText;
     [SerializeField] Text finalScoreText;
-
-    [Space(10)]
-    [SerializeField] Text timerText;
 
     private void Awake()
     {
@@ -35,25 +27,7 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape) && game.activeSelf && !pause.activeSelf)
         {
-            GameManager.Instance.EndGame();
-            OpenWindow(0);
-        }
-
-        if(game.activeSelf && !result.activeSelf)
-        {
-            currentTime -= Time.deltaTime;
-            if(currentTime <= 0)
-            {
-                GameManager.Instance.EndGame();
-                OpenWindow(5);
-
-                return;
-            }
-
-            int minutes = Mathf.FloorToInt(currentTime / 60);
-            int seconds = Mathf.FloorToInt(currentTime % 60);
-
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            OpenMenu();
         }
     }
 
@@ -63,13 +37,18 @@ public class UIManager : MonoBehaviour
         finalScoreText.text = scoreText.text;
     }
 
+    public void OpenMenu()
+    {
+        OpenWindow(0);
+        game.SetActive(false);
+
+        GameManager.Instance.EndGame();
+    }
+
     public void StartGameOnClick()
     {
-        score = 0;
-        currentTime = initTime;
-
         scoreText.text = $"{score}";
-        GameManager.Instance.StartGame();
+        //GameManager.Instance.StartGame();
 
         OpenWindow(3);
     }

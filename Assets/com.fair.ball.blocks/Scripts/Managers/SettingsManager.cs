@@ -18,11 +18,13 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        loop.mute = sfx.mute = true;
+
         soundBtn.onClick.AddListener(() =>
         {
             loop.mute = !loop.mute;
 
-            string status = loop.mute ? "ON" : "OFF";
+            string status = loop.mute ? "OFF" : "ON";
             soundBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 
@@ -31,7 +33,7 @@ public class SettingsManager : MonoBehaviour
         {
             sfx.mute = !sfx.mute;
 
-            string status = sfx.mute ? "ON" : "OFF";
+            string status = sfx.mute ? "OFF" : "ON";
             sfxBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 
@@ -39,7 +41,7 @@ public class SettingsManager : MonoBehaviour
         {
             VibraEnable = !VibraEnable;
 
-            string status = VibraEnable ? "ON" : "OFF";
+            string status = VibraEnable ? "OFF" : "ON";
             vibroBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 

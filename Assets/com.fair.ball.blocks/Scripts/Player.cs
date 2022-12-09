@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        transform.position = new Vector2(FindObjectOfType<UIManager>().border.position.x + 1, 0);
     }
 
     private void Update()
@@ -20,8 +19,6 @@ public class Player : MonoBehaviour
         {
             return;
         }
-
-        transform.position = new Vector2(transform.position.x, _camera.ScreenToWorldPoint(Input.mousePosition).y);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
