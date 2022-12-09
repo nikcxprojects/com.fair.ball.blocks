@@ -5,7 +5,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
-    private Player playerPrefab { get; set; }
+    private float nextFire;
+    private const float fireRate = 0.15f;
+
+    private Player PlayerPrefab { get; set; }
+    private GameObject BulletPrefab { get; set; }
 
     private Ball BallPrefab { get; set; }
     private Transform EnvironmentRef { get; set; }
@@ -15,15 +19,24 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        playerPrefab = Resources.Load<Player>("player");
+        PlayerPrefab = Resources.Load<Player>("player");
 
         BallPrefab = Resources.Load<Ball>("ball");
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
 
+    public void Shoot()
+    {
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Debug.Log("fire");
+        }
+    }
+
     public void StartGame()
     {
-        Instantiate(playerPrefab, EnvironmentRef);
+        Instantiate(PlayerPrefab, EnvironmentRef);
     }
 
     public void EndGame()

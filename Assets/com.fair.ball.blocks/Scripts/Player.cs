@@ -3,6 +3,8 @@ using System;
 
 public class Player : MonoBehaviour
 {
+    private const float RotSpeed = 10.0f;
+
     private Camera _camera;
     public static Action BallCollected { get; set; } = delegate { };
 
@@ -20,11 +22,12 @@ public class Player : MonoBehaviour
         }
 
         Vector2 toInput = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        toInput.Normalize();
 
         toInput.x = Mathf.Clamp(toInput.x, -1, 1);
-        toInput.y = Mathf.Clamp(toInput.y, 0, 1);
+        toInput.y = Mathf.Clamp(toInput.y, 0.2f, 1);
 
-        transform.GetChild(0).up = Vector2.MoveTowards(transform.GetChild(0).up, toInput, 10 * Time.deltaTime);
+        transform.GetChild(0).up = toInput;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
