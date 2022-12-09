@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector2 inDirection = collision.GetContact(0).point - (Vector2)transform.position.normalized;
+        Vector2 inDirection = (collision.GetContact(0).point - (Vector2)transform.position).normalized;
         Vector2 normal = collision.GetContact(0).normal;
 
         Rigidbody.velocity = Vector2.Reflect(inDirection, normal).normalized * force;
