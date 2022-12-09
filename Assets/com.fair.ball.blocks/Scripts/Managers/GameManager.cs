@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private Transform EnvironmentRef { get; set; }
 
     public UIManager uiManager;
+    [SerializeField] Transform bottomLine;
 
     private void Awake()
     {

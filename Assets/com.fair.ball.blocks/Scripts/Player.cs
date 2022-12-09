@@ -1,8 +1,6 @@
 using UnityEngine;
 using System;
 
-using Random = UnityEngine.Random;
-
 public class Player : MonoBehaviour
 {
     private Camera _camera;
@@ -11,6 +9,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.x + 1);
     }
 
     private void Update()

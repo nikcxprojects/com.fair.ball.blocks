@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text finalScoreText;
 
+    public Transform border;
+
     private void Awake()
     {
         OpenWindow(0);
