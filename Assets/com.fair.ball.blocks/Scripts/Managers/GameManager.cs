@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
             Destroy(FindObjectOfType<Player>().gameObject);
         }
 
+        if (GameObject.Find("level(Clone)"))
+        {
+            Destroy(GameObject.Find("level(Clone)"));
+        }
+
         Bullet[] balls = FindObjectsOfType<Bullet>();
         foreach(Bullet b in balls)
         {
