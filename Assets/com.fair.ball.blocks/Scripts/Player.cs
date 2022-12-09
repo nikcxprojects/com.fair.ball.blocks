@@ -3,9 +3,8 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    private const float RotSpeed = 10.0f;
-
     private Camera _camera;
+    public static Vector2 Velocity { get; private set; }
     public static Action BallCollected { get; set; } = delegate { };
 
     private void Awake()
@@ -26,6 +25,8 @@ public class Player : MonoBehaviour
 
         toInput.x = Mathf.Clamp(toInput.x, -1, 1);
         toInput.y = Mathf.Clamp(toInput.y, 0.2f, 1);
+
+        Velocity = toInput;
 
         transform.GetChild(0).up = toInput;
     }

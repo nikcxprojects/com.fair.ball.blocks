@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         PlayerPrefab = Resources.Load<Player>("player");
+        BulletPrefab = Resources.Load<GameObject>("bullet");
 
         BallPrefab = Resources.Load<Ball>("ball");
         EnvironmentRef = GameObject.Find("Environment").transform;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Debug.Log("fire");
+            Instantiate(BulletPrefab, EnvironmentRef);
         }
     }
 
