@@ -29,6 +29,8 @@ public class Bullet : MonoBehaviour
     {
         transform.position = FindObjectOfType<Player>().transform.position;
         Rigidbody.velocity = Player.Velocity.normalized * force;
+
+        Destroy(gameObject, 2.0f);
     }
 
     private void Update()

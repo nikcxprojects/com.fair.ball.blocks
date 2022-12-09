@@ -13,6 +13,11 @@ public class Block : MonoBehaviour
             health = value;
             TextComponent.text = $"{health}";
 
+            if(Animation.isPlaying)
+            {
+                Animation.Stop();
+            }
+
             Animation.Play();
             OnCollisionEnter?.Invoke();
 
