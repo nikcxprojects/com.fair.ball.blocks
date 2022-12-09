@@ -31,7 +31,7 @@ public class Block : MonoBehaviour
     {
         Animation = GetComponent<Animation>();
         TextComponent = GetComponentInChildren<TextMeshPro>();
-        Health = UnityEngine.Random.Range(1, 1);
+        Health = UnityEngine.Random.Range(3, 99);
     }
 
     private void OnDestroy()
@@ -39,7 +39,7 @@ public class Block : MonoBehaviour
         OnDestroyAction.Invoke();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D()
     {
         if (Animation.isPlaying)
         {

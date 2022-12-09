@@ -33,20 +33,6 @@ public class UIManager : MonoBehaviour
         };
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape) && game.activeSelf && !pause.activeSelf)
-        {
-            OpenMenu();
-        }
-    }
-
-    public void UpdateScore()
-    {
-        scoreText.text = $"{++score}";
-        finalScoreText.text = scoreText.text;
-    }
-
     public void OpenMenu()
     {
         OpenWindow(0);
