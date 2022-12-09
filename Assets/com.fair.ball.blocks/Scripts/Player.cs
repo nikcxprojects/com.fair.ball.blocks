@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.x + 1);
+        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.y + 0.95f);
     }
 
     private void Update()
@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
         {
             return;
         }
+
+        Vector2 toInput = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        transform.GetChild(0).up = toInput.normalized;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

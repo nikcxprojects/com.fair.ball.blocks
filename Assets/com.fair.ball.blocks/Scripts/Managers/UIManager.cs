@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
     public void StartGameOnClick()
     {
         scoreText.text = $"{score}";
-        //GameManager.Instance.StartGame();
+        GameManager.Instance.StartGame();
 
         OpenWindow(3);
     }
