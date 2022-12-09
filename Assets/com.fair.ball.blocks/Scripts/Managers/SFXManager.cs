@@ -4,16 +4,16 @@ public class SFXManager : MonoBehaviour
 {
     [SerializeField] AudioSource sfxSource;
 
-    private void Awake()
+    private void Start()
     {
-        //Player.BallCollected += () =>
-        //{
-        //    if(sfxSource.isPlaying)
-        //    {
-        //        sfxSource.Stop();
-        //    }
+        Block.OnCollisionEnter += () => 
+        {
+            if (sfxSource.isPlaying)
+            {
+                sfxSource.Stop();
+            }
 
-        //    sfxSource.Play();
-        //};
+            sfxSource.Play();
+        };
     }
 }

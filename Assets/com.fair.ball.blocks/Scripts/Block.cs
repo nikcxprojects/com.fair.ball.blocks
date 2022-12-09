@@ -15,7 +15,9 @@ public class Block : MonoBehaviour
 
             if(health <= 0)
             {
-                Destroy(gameObject);
+                TextComponent.enabled = false;
+                GetComponent<Rigidbody2D>().isKinematic = false;
+                Destroy(gameObject, 2.0f);
             }
         }
     }
