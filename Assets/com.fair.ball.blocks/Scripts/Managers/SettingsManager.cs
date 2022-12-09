@@ -20,18 +20,27 @@ public class SettingsManager : MonoBehaviour
     {
         soundBtn.onClick.AddListener(() =>
         {
-            loop.mute = true;
+            loop.mute = !loop.mute;
+
+            string status = loop.mute ? "ON" : "OFF";
+            soundBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 
 
         sfxBtn.onClick.AddListener(() =>
         {
-            sfx.mute = false;
+            sfx.mute = !sfx.mute;
+
+            string status = sfx.mute ? "ON" : "OFF";
+            sfxBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 
         vibroBtn.onClick.AddListener(() =>
         {
-            VibraEnable = false;
+            VibraEnable = !VibraEnable;
+
+            string status = VibraEnable ? "ON" : "OFF";
+            vibroBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 
         soundBtn.onClick.Invoke();
