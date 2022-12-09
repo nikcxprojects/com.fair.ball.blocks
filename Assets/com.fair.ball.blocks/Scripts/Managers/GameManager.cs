@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,10 +5,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
     private float nextFire;
-    private const float fireRate = 0.15f;
+    private const float fireRate = 0.05f;
 
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
+    private GameObject Level { get; set; }
 
     private Transform EnvironmentRef { get; set; }
 
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefab = Resources.Load<Player>("player");
         BulletPrefab = Resources.Load<GameObject>("bullet");
+        BulletPrefab = Resources.Load<GameObject>("level");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Instantiate(PlayerPrefab, EnvironmentRef);
+        Instantiate(Level, EnvironmentRef);
     }
 
     public void EndGame()

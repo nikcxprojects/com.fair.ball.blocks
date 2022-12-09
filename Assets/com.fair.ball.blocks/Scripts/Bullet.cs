@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private int health = 10;
+    private int health = 25;
     public int Health
     {
         get => health;
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private const float force = 13;
+    private const float force = 30;
     private Vector2 LastVelocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
 
