@@ -15,7 +15,6 @@ public class Block : MonoBehaviour
 
             if(health <= 0)
             {
-                OnDestroy?.Invoke();
                 Destroy(gameObject);
             }
         }
@@ -26,13 +25,18 @@ public class Block : MonoBehaviour
     private TextMeshPro TextComponent { get; set; }
 
     public static Action OnCollisionEnter { get; set; }
-    public static Action OnDestroy { get; set; }
+    public static Action OnDestroyAction { get; set; }
 
     private void Start()
     {
         Animation = GetComponent<Animation>();
         TextComponent = GetComponentInChildren<TextMeshPro>();
-        Health = UnityEngine.Random.Range(10, 99);
+        Health = UnityEngine.Random.Range(1, 1);
+    }
+
+    private void OnDestroy()
+    {
+        OnDestroyAction.Invoke();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

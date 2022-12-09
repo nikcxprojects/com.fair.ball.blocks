@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ShootBtn : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ShootBtn : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
     bool IsPressing { get; set; }
 
@@ -21,6 +21,11 @@ public class ShootBtn : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     public void OnPointerUp(PointerEventData eventData)
+    {
+        IsPressing = false;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
     {
         IsPressing = false;
     }

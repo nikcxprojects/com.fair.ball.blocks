@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private float nextFire;
     private const float fireRate = 0.05f;
 
-    private int destroyedBlockCount;
+    public int destroyedBlockCount;
     private const int blockCount = 81;
 
     private Player PlayerPrefab { get; set; }
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Block.OnDestroy += () =>
+        Block.OnDestroyAction += () =>
         {
             if(++destroyedBlockCount >= blockCount)
             {
@@ -68,8 +68,8 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.Find("level(Clone)"));
         }
 
-        Bullet[] balls = FindObjectsOfType<Bullet>();
-        foreach(Bullet b in balls)
+        Bullet[] bullets = FindObjectsOfType<Bullet>();
+        foreach(Bullet b in bullets)
         {
             Destroy(b.gameObject);
         }

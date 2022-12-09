@@ -49,8 +49,6 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        score = 0;
-
         OpenWindow(0);
         game.SetActive(false);
 
@@ -59,6 +57,8 @@ public class UIManager : MonoBehaviour
 
     public void StartGameOnClick()
     {
+        score = 0;
+
         scoreText.text = $"{score}";
         GameManager.Instance.StartGame();
 

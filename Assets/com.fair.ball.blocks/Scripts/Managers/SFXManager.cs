@@ -6,14 +6,14 @@ public class SFXManager : MonoBehaviour
 
     private void Awake()
     {
-        Player.BallCollected += () =>
-        {
-            if(sfxSource.isPlaying)
-            {
-                sfxSource.Stop();
-            }
+        //Player.BallCollected += () =>
+        //{
+        //    if(sfxSource.isPlaying)
+        //    {
+        //        sfxSource.Stop();
+        //    }
 
-            sfxSource.Play();
-        };
+        //    sfxSource.Play();
+        //};
     }
 }
