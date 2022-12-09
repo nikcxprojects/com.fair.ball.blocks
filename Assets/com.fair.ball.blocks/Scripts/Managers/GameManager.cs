@@ -14,13 +14,12 @@ public class GameManager : MonoBehaviour
     private Transform EnvironmentRef { get; set; }
 
     public UIManager uiManager;
-    [SerializeField] Transform bottomLine;
 
     private void Awake()
     {
         PlayerPrefab = Resources.Load<Player>("player");
         BulletPrefab = Resources.Load<GameObject>("bullet");
-        BulletPrefab = Resources.Load<GameObject>("level");
+        Level = Resources.Load<GameObject>("level");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
