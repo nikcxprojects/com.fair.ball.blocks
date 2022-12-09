@@ -25,6 +25,14 @@ public class UIManager : MonoBehaviour
         OpenWindow(0);
     }
 
+    private void Start()
+    {
+        Block.OnCollisionEnter += () =>
+        {
+            scoreText.text = finalScoreText.text = $"{++score}";
+        };
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && game.activeSelf && !pause.activeSelf)
@@ -41,6 +49,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        score = 0;
+
         OpenWindow(0);
         game.SetActive(false);
 
