@@ -2,7 +2,22 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private const float force = 30;
+    private int health = 10;
+    public int Health
+    {
+        get => health;
+        set 
+        {
+            health = value;
+            if(health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private const float force = 13;
+    private Vector2 LastVelocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
 
     private void Awake()
@@ -13,14 +28,21 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         transform.position = FindObjectOfType<Player>().transform.position;
-        Rigidbody.velocity = Player.Velocity * force;
+        Rigidbody.velocity = Player.Velocity.normalized * force;
+    }
+
+    private void Update()
+    {
+        LastVelocity = Rigidbody.velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector2 inDirection = (collision.GetContact(0).point - (Vector2)transform.position).normalized;
-        Vector2 normal = collision.GetContact(0).normal;
+        float speed = LastVelocity.magnitude;
 
-        Rigidbody.velocity = Vector2.Reflect(inDirection, normal).normalized * force;
+        Vector2 direction = Vector2.Reflect(LastVelocity.normalized, collision.contacts[0].normal);
+        Rigidbody.velocity = direction * Mathf.Max(speed, 0);
+
+        Health--;
     }
 }
