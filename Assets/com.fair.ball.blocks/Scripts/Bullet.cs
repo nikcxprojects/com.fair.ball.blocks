@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private int health = 25;
+    private int health = 10;
     public int Health
     {
         get => health;

@@ -28,18 +28,12 @@ public class Block : MonoBehaviour
     private TextMeshPro TextComponent { get; set; }
 
     public static Action OnCollisionEnter { get; set; }
-    public static Action OnDestroyAction { get; set; }
 
     private void Start()
     {
         Animation = GetComponent<Animation>();
         TextComponent = GetComponentInChildren<TextMeshPro>();
         Health = UnityEngine.Random.Range(1, 20);
-    }
-
-    private void OnDestroy()
-    {
-        OnDestroyAction.Invoke();
     }
 
     public void MoveDown()

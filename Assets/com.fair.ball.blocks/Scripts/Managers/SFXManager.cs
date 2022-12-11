@@ -6,14 +6,14 @@ public class SFXManager : MonoBehaviour
 
     private void Start()
     {
-        Block.OnCollisionEnter += () => 
-        {
-            if (sfxSource.isPlaying)
-            {
-                sfxSource.Stop();
-            }
+        //Block.OnCollisionEnter += () => 
+        //{
+        //    if (sfxSource.isPlaying)
+        //    {
+        //        sfxSource.Stop();
+        //    }
 
-            sfxSource.Play();
-        };
+        //    sfxSource.Play();
+        //};
     }
 }
