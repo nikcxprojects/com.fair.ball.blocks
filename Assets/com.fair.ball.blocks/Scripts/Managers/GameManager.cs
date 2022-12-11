@@ -28,10 +28,8 @@ public class GameManager : MonoBehaviour
     {
         Block.OnCollisionEnter += () =>
         {
-            var hit = Instantiate(Resources.Load<AudioSource>("hit sound"));
+            var hit = Instantiate(Resources.Load<AudioSource>("hit"));
             hit.mute = GameObject.Find("SFX Source").GetComponent<AudioSource>().mute;
-
-            Destroy(hit, 0.25f);
         };
     }
 
