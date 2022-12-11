@@ -17,6 +17,7 @@ public class Block : MonoBehaviour
             {
                 TextComponent.enabled = false;
                 GetComponent<Rigidbody2D>().isKinematic = false;
+                GetComponent<BoxCollider2D>().enabled = false;
                 Destroy(gameObject, 2.0f);
             }
         }
