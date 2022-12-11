@@ -51,9 +51,11 @@ public class GameManager : MonoBehaviour
         float screenWorldWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
 
         int blockCount = Mathf.RoundToInt(screenWorldWidth * 2 / (blockSize + padding));
+        float xStart = -screenWorldWidth + 0.4f;
+
         for(int i = 0; i < blockCount; i++)
         {
-            Instantiate(BlockPrefab, new Vector2(-screenWorldWidth + (i * blockSize + padding), 0), Quaternion.identity, EnvironmentRef);
+            Instantiate(BlockPrefab, new Vector2(xStart + i * 0.6f, 2.98f), Quaternion.identity, EnvironmentRef);
         }
     }
 
