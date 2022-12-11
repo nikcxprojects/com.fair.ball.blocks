@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
     private float nextFire;
-    private const float fireRate = 0.03f;
+    private const float fireRate = 0.1f;
 
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
