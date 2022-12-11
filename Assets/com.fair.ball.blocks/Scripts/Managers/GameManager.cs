@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
     private GameObject BlockPrefab { get; set; }
-    private GameObject Level { get; set; }
 
     private Transform EnvironmentRef { get; set; }
 
@@ -24,7 +23,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefab = Resources.Load<Player>("player");
         BulletPrefab = Resources.Load<GameObject>("bullet");
         BlockPrefab = Resources.Load<GameObject>("block");
-        Level = Resources.Load<GameObject>("level");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
@@ -76,22 +74,24 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         destroyedBlockCount = 0;
-        InvokeRepeating(nameof(CreateLine), 0.0f, 1.0f);
+        InvokeRepeating(nameof(CreateLine), 0.0f, 4.0f);
 
         Instantiate(PlayerPrefab, EnvironmentRef);
-        //Instantiate(Level, EnvironmentRef);
     }
 
     public void EndGame()
     {
+        CancelInvoke(nameof(CreateLine));
+
         if (FindObjectOfType<Player>())
         {
             Destroy(FindObjectOfType<Player>().gameObject);
         }
 
-        if (GameObject.Find("level(Clone)"))
+        Block[] blocks = FindObjectsOfType<Block>();
+        foreach(Block b in blocks)
         {
-            Destroy(GameObject.Find("level(Clone)"));
+            Destroy(b.gameObject);
         }
 
         Bullet[] bullets = FindObjectsOfType<Bullet>();
