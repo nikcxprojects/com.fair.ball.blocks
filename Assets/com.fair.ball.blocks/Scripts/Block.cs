@@ -41,6 +41,11 @@ public class Block : MonoBehaviour
         OnDestroyAction.Invoke();
     }
 
+    public void MoveDown()
+    {
+        transform.position += Vector3.down * 0.6f;
+    }
+
     private void OnCollisionEnter2D()
     {
         if (Animation.isPlaying)

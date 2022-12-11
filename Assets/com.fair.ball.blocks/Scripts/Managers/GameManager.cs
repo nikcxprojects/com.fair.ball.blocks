@@ -39,12 +39,16 @@ public class GameManager : MonoBehaviour
                 EndGame();
             }
         };
-
-        CreateLine();
     }
 
     private void CreateLine()
     {
+        Block[] blocks = FindObjectsOfType<Block>();
+        foreach(Block b in blocks)
+        {
+            b.MoveDown();
+        }
+        
         float blockSize = 0.5f;
         float padding = 0.1f;
 
@@ -55,7 +59,8 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < blockCount; i++)
         {
-            Instantiate(BlockPrefab, new Vector2(xStart + i * 0.6f, 2.98f), Quaternion.identity, EnvironmentRef);
+            Vector2 position = new Vector2(xStart + i * 0.6f, GameObject.Find("topBorder").transform.position.y - 0.2f);
+            Instantiate(BlockPrefab, position, Quaternion.identity, EnvironmentRef);
         }
     }
 
@@ -71,9 +76,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         destroyedBlockCount = 0;
+        InvokeRepeating(nameof(CreateLine), 0.0f, 1.0f);
 
         Instantiate(PlayerPrefab, EnvironmentRef);
-        Instantiate(Level, EnvironmentRef);
+        //Instantiate(Level, EnvironmentRef);
     }
 
     public void EndGame()
