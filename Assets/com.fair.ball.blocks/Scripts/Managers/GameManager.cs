@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
     private float nextFire;
-    private const float fireRate = 0.05f;
+    private const float fireRate = 0.03f;
 
     public int destroyedBlockCount;
     private const int blockCount = 81;
@@ -55,11 +55,11 @@ public class GameManager : MonoBehaviour
         float screenWorldWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
 
         int blockCount = Mathf.RoundToInt(screenWorldWidth * 2 / (blockSize + padding));
-        float xStart = -screenWorldWidth + 0.4f;
+        float xStart = -screenWorldWidth + (blockCount == 9 ? 0.4f : 0.325f);
 
         for(int i = 0; i < blockCount; i++)
         {
-            Vector2 position = new Vector2(xStart + i * 0.6f, GameObject.Find("topBorder").transform.position.y - 0.2f);
+            Vector2 position = new Vector2(xStart + i * (blockSize + padding), GameObject.Find("topBorder").transform.position.y - 0.2f);
             Instantiate(BlockPrefab, position, Quaternion.identity, EnvironmentRef);
         }
     }
