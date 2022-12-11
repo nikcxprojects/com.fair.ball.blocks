@@ -14,7 +14,7 @@ public class SettingsManager : MonoBehaviour
     [Space(10)]
     [SerializeField] Button vibroBtn;
 
-    public static bool VibraEnable { get; set; } = true;
+    public static bool VibraEnable { get; set; } = false;
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class SettingsManager : MonoBehaviour
         {
             VibraEnable = !VibraEnable;
 
-            string status = VibraEnable ? "OFF" : "ON";
+            string status = VibraEnable ? "ON" : "OFF";
             vibroBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
         });
 

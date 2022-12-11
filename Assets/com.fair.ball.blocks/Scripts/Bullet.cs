@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private const float force = 30;
+    private const float force = 25;
     private Vector2 LastVelocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
 

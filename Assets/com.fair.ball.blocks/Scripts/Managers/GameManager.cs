@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
     private float nextFire;
-    private const float fireRate = 0.1f;
+    private const float fireRate = 0.15f;
 
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
         {
             var hit = Instantiate(Resources.Load<AudioSource>("hit"));
             hit.mute = GameObject.Find("SFX Source").GetComponent<AudioSource>().mute;
+
+            if(SettingsManager.VibraEnable)
+            {
+                Handheld.Vibrate();
+            }
         };
     }
 
@@ -51,6 +56,11 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < blockCount; i++)
         {
+            if (Random.Range(0, 100) < 15)
+            {
+                continue;
+            }
+
             Vector2 position = new Vector2(xStart + i * (blockSize + padding), GameObject.Find("topBorder").transform.position.y - 0.2f);
             Instantiate(BlockPrefab, position, Quaternion.identity, EnvironmentRef);
         }
@@ -67,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        InvokeRepeating(nameof(CreateLine), 0.0f, 4.0f);
+        InvokeRepeating(nameof(CreateLine), 0.0f, 3.0f);
         Instantiate(PlayerPrefab, EnvironmentRef);
     }
 
