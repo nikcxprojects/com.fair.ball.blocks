@@ -33,7 +33,7 @@ public class Block : MonoBehaviour
     {
         Animation = GetComponent<Animation>();
         TextComponent = GetComponentInChildren<TextMeshPro>();
-        Health = UnityEngine.Random.Range(3, 99);
+        Health = UnityEngine.Random.Range(1, 20);
     }
 
     private void OnDestroy()

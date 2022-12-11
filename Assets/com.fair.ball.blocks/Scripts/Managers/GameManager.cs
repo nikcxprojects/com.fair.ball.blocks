@@ -7,9 +7,6 @@ public class GameManager : MonoBehaviour
     private float nextFire;
     private const float fireRate = 0.03f;
 
-    public int destroyedBlockCount;
-    private const int blockCount = 81;
-
     private Player PlayerPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
     private GameObject BlockPrefab { get; set; }
@@ -31,11 +28,7 @@ public class GameManager : MonoBehaviour
     {
         Block.OnDestroyAction += () =>
         {
-            if(++destroyedBlockCount >= blockCount)
-            {
-                uiManager.OpenWindow(5);
-                EndGame();
-            }
+            
         };
     }
 
@@ -73,9 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        destroyedBlockCount = 0;
         InvokeRepeating(nameof(CreateLine), 0.0f, 4.0f);
-
         Instantiate(PlayerPrefab, EnvironmentRef);
     }
 
@@ -99,5 +90,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(b.gameObject);
         }
+
+        uiManager.OpenWindow(5);
     }
 }
